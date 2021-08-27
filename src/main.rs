@@ -1,6 +1,7 @@
 use itertools::Itertools;
 use std::collections::HashSet;
 use std::io::{prelude::*, stdin};
+use rayon::prelude::*;
 
 struct Record {
     label: String,
@@ -40,7 +41,7 @@ impl Record {
 fn main() {
     read_fasta_records()
         .iter()
-        .combinations(2)
+        .combinations(2).collect::<Vec<Vec<&Record>>>().par_iter()
         .map(|record_pair| {
             (
                 record_pair[0],
