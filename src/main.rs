@@ -1,7 +1,11 @@
 use itertools::Itertools;
-use std::collections::HashSet;
 use std::io::{prelude::*, stdin};
 use rayon::prelude::*;
+
+const A: u8 = 65;
+const C: u8 = 67;
+const G: u8 = 71;
+const T: u8 = 84;
 
 struct Record {
     label: String,
@@ -33,8 +37,10 @@ impl Record {
     }
 
     fn is_nucleotide(c: &u8) -> bool {
-        let nuc: HashSet<u8> = vec![65, 67, 71, 84].into_iter().collect();
-        nuc.contains(c)
+        match *c {
+            A|C|G|T => true,
+            _ => false,
+        }
     }
 }
 
