@@ -2,10 +2,10 @@ use itertools::Itertools;
 use std::io::{prelude::*, stdin};
 use rayon::prelude::*;
 
-const A: u8 = 65;
-const C: u8 = 67;
-const G: u8 = 71;
-const T: u8 = 84;
+const A: u8 = b'A';
+const C: u8 = b'C';
+const G: u8 = b'G';
+const T: u8 = b'T';
 
 struct Record {
     label: String,
